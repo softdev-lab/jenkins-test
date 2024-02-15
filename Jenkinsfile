@@ -77,7 +77,7 @@ pipeline {
             steps {
                 echo 'Build & Push'
                 withCredentials([
-                    usernamePassword(usernameVariable: 'DEPLOY_USER', passwordVariable: 'DEPLOY_TOKEN')
+                    usernamePassword(credentialsId: 'vm2version2', usernameVariable: 'DEPLOY_USER', passwordVariable: 'DEPLOY_TOKEN')
                 ]) {
                     sh "docker login registry.gitlab.com -u ${DEPLOY_USER} -p ${DEPLOY_TOKEN}"
                 }
