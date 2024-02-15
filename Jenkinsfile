@@ -7,6 +7,9 @@ pipeline {
 
     stages {
         stage("Clear Docker Containers") {
+            agent{
+                label 'test'
+            }
             steps {
                 script {
                     def runningContainers = sh(script: 'docker ps -q | wc -l', returnStdout: true).trim().toInteger()
@@ -21,6 +24,9 @@ pipeline {
         }
 
         stage("Install Environment") {
+            agent {
+                label 'test'
+            }
             steps {
                 echo 'Installing Environment'
                 sh 'npm install'
@@ -28,6 +34,9 @@ pipeline {
         }
 
         stage("Unit Test") {
+            agent {
+                label 'test'
+            }
             steps {
                 echo 'Run Unit Test'
                 sh 'npm run test'
@@ -35,6 +44,9 @@ pipeline {
         }
 
         stage("Docker Compose API UP"){
+            agent {
+                label 'test'
+            }
             steps {
                 echo 'Compose API UP'
                 sh 'pwd && ls -al'
@@ -45,6 +57,9 @@ pipeline {
         }
 
         stage("Run Robot") {
+            agent {
+                label 'test'
+            }
             steps {
                 echo 'Clone Robot'
                 dir('./robot/') {
@@ -56,10 +71,13 @@ pipeline {
         }
 
         stage("Build & Push to Registry") {
+            agent {
+                label 'test'
+            }
             steps {
                 echo 'Build & Push'
                 withCredentials([
-                    usernamePassword(credentialsId: 'jenkins_test', usernameVariable: 'DEPLOY_USER', passwordVariable: 'DEPLOY_TOKEN')
+                    usernamePassword(credentialsId: 'vm2', usernameVariable: 'DEPLOY_USER', passwordVariable: 'DEPLOY_TOKEN')
                 ]) {
                     sh "docker login registry.gitlab.com -u ${DEPLOY_USER} -p ${DEPLOY_TOKEN}"
                 }
@@ -70,6 +88,9 @@ pipeline {
         }
 
         stage("Clean") {
+            agent {
+                label 'test'
+            }
             steps {
                 echo 'Cleaning'
                 sh 'docker compose -f ./compose.dev.yaml down'
@@ -78,6 +99,9 @@ pipeline {
         }
 
         stage("Deploy in Pre-Prod") {
+            agent {
+                label 'preprod'
+            }
             steps {
                 echo 'Run on Pre-Prod'
                 sh 'docker compose up -d --build'
