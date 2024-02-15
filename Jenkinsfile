@@ -66,7 +66,7 @@ pipeline {
                     git branch: 'main', url: 'https://github.com/softdev-lab/jenkins-robot.git'
                 }
                 echo 'Run Robot'
-                sh 'python3 -m robot ./jenkins-test.robot'
+                sh 'cd ./robot && python3 -m robot ./jenkins-test.robot'
             }
         }
 
