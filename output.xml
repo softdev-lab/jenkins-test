@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.8 on win32)" generated="2024-02-16T02:45:03.005846" rpa="false" schemaversion="5">
+<suite id="s1" name="Jenkins-Test" source="D:\XSectorZ\GitHubRepoes\Jenkins-Test\jenkins-test\jenkins-test.robot">
+<test id="s1-t1" name="Test Plus Two Int Endpoint" line="5">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.078634" level="INFO">GET Request : url=http://localhost:5000/plus/2/8 
+ path_url=/plus/2/8 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-02-16T02:45:03.078634" level="INFO">GET Response : url=http://localhost:5000/plus/2/8 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-sdV4ERHYT3s/5FoIUuWXWM16h+U"', 'Date': 'Thu, 15 Feb 2024 19:45:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=10 
+ </msg>
+<msg time="2024-02-16T02:45:03.078634" level="INFO">${responds} = &lt;Response [200]&gt;</msg>
+<var>${responds}</var>
+<arg>http://localhost:5000/plus/2/8</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.072775" elapsed="0.005859"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${responds.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.078634" elapsed="0.000976"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-02-16T02:45:03.079610" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'int'&gt;</msg>
+<arg>${responds.text}</arg>
+<arg>${10}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.079610" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.079610" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-02-16T02:45:03.079610" elapsed="0.000000"/>
+</kw>
+<doc>Test the /plus/:num1/:num2 endpoint</doc>
+<status status="PASS" start="2024-02-16T02:45:03.072775" elapsed="0.006835"/>
+</test>
+<test id="s1-t2" name="Test Plus Two Floating Endpoint" line="12">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.084093" level="INFO">GET Request : url=http://localhost:5000/plus/3.2/4.6 
+ path_url=/plus/3.2/4.6 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-02-16T02:45:03.084093" level="INFO">GET Response : url=http://localhost:5000/plus/3.2/4.6 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '3', 'ETag': 'W/"3-BF4yxG9+TGK+4xr6lrSJfM/yK9s"', 'Date': 'Thu, 15 Feb 2024 19:45:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=7.8 
+ </msg>
+<msg time="2024-02-16T02:45:03.084093" level="INFO">${responds} = &lt;Response [200]&gt;</msg>
+<var>${responds}</var>
+<arg>http://localhost:5000/plus/3.2/4.6</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.081113" elapsed="0.002980"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${responds.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.085068" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-02-16T02:45:03.086044" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'float'&gt;</msg>
+<arg>${responds.text}</arg>
+<arg>${7.8}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.085068" elapsed="0.000976"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.086044" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-02-16T02:45:03.086044" elapsed="0.000000"/>
+</kw>
+<doc>Test the /plus/:num1/:num2 endpoint</doc>
+<status status="PASS" start="2024-02-16T02:45:03.081113" elapsed="0.004931"/>
+</test>
+<test id="s1-t3" name="Test Plus First Int Second Floating Endpoint" line="19">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.088976" level="INFO">GET Request : url=http://localhost:5000/plus/5/8.5 
+ path_url=/plus/5/8.5 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-02-16T02:45:03.088976" level="INFO">GET Response : url=http://localhost:5000/plus/5/8.5 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '4', 'ETag': 'W/"4-qGHGNY/e00UQqxli62YjAiDXeUI"', 'Date': 'Thu, 15 Feb 2024 19:45:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=13.5 
+ </msg>
+<msg time="2024-02-16T02:45:03.089953" level="INFO">${responds} = &lt;Response [200]&gt;</msg>
+<var>${responds}</var>
+<arg>http://localhost:5000/plus/5/8.5</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.087020" elapsed="0.002933"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${responds.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.089953" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-02-16T02:45:03.090959" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'float'&gt;</msg>
+<arg>${responds.text}</arg>
+<arg>${13.5}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.089953" elapsed="0.001006"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.090959" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-02-16T02:45:03.090959" elapsed="0.000000"/>
+</kw>
+<doc>Test the /plus/:num1/:num2 endpoint</doc>
+<status status="PASS" start="2024-02-16T02:45:03.086044" elapsed="0.004915"/>
+</test>
+<test id="s1-t4" name="Test Plus First Floating second Int Endpoint" line="26">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.095424" level="INFO">GET Request : url=http://localhost:5000/plus/4.7/6 
+ path_url=/plus/4.7/6 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-02-16T02:45:03.095424" level="INFO">GET Response : url=http://localhost:5000/plus/4.7/6 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '4', 'ETag': 'W/"4-00PGmWf0qwpYQYtPUv6dTE45hB8"', 'Date': 'Thu, 15 Feb 2024 19:45:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=10.7 
+ </msg>
+<msg time="2024-02-16T02:45:03.095424" level="INFO">${responds} = &lt;Response [200]&gt;</msg>
+<var>${responds}</var>
+<arg>http://localhost:5000/plus/4.7/6</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.090959" elapsed="0.004465"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${responds.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.095424" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-02-16T02:45:03.096399" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'float'&gt;</msg>
+<arg>${responds.text}</arg>
+<arg>${10.7}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-02-16T02:45:03.096399" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-02-16T02:45:03.096399" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-02-16T02:45:03.096399" elapsed="0.000000"/>
+</kw>
+<doc>Test the /plus/:num1/:num2 endpoint</doc>
+<status status="PASS" start="2024-02-16T02:45:03.090959" elapsed="0.006417"/>
+</test>
+<status status="PASS" start="2024-02-16T02:45:03.006822" elapsed="0.090554"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="Jenkins-Test">Jenkins-Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
