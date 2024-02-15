@@ -50,9 +50,9 @@ pipeline {
             steps {
                 echo 'Compose API UP'
                 sh 'pwd && ls -al'
-                sh 'sudo docker-compose -f ./compose.dev.yaml up -d --build'
-                sh 'sudo docker-compose ps'
-                sh 'sudo docker ps'
+                sh 'docker-compose -f ./compose.dev.yaml up -d --build'
+                sh 'docker-compose ps'
+                sh 'docker ps'
             }
         }
 
@@ -79,10 +79,10 @@ pipeline {
                 withCredentials([
                     usernamePassword(credentialsId: 'vm2', usernameVariable: 'DEPLOY_USER', passwordVariable: 'DEPLOY_TOKEN')
                 ]) {
-                    sh "sudo docker login registry.gitlab.com -u ${DEPLOY_USER} -p ${DEPLOY_TOKEN}"
+                    sh "docker login registry.gitlab.com -u ${DEPLOY_USER} -p ${DEPLOY_TOKEN}"
                 }
-                sh "sudo docker build -t registry.gitlab.com/xsectorz/jenkins-test ."
-                sh "sudo docker push registry.gitlab.com/xsectorz/jenkins-test"
+                sh "docker build -t registry.gitlab.com/xsectorz/jenkins-test ."
+                sh "docker push registry.gitlab.com/xsectorz/jenkins-test"
                 echo 'Build & Push Success!'
             }
         }
@@ -93,8 +93,8 @@ pipeline {
             }
             steps {
                 echo 'Cleaning'
-                sh 'sudo docker-compose -f ./compose.dev.yaml down'
-                sh 'sudo docker system prune -a -f'
+                sh 'docker-compose -f ./compose.dev.yaml down'
+                sh 'docker system prune -a -f'
             }
         }
 
@@ -104,7 +104,7 @@ pipeline {
             }
             steps {
                 echo 'Run on Pre-Prod'
-                sh 'sudo docker-compose up -d --build'
+                sh 'docker-compose up -d --build'
             }
         }
     }
