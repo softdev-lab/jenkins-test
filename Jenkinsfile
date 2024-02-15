@@ -50,7 +50,7 @@ pipeline {
             steps {
                 echo 'Compose API UP'
                 sh 'pwd && ls -al'
-                sh 'docker-compose -f ./compose.dev.yaml up -d --build'
+                sh 'docker-compose up -d'
                 sh 'docker-compose ps'
                 sh 'docker ps'
             }
